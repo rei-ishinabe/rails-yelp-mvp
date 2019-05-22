@@ -9,9 +9,24 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<!--     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous"> -->
   </head>
 
   <body>
-    <%= yield %>
+    <div class='navbar bg-dark text-white'>
+      <%= link_to restaurants_path do %>
+        <p class='navbar-brand text-white m-0'>MyYelp</p>
+      <% end %>
+      <div>
+        <%= link_to restaurants_path, class:'navbar-nav text-white d-inline' do %>
+          <i class="fas fa-home"></i>
+        <% end %>
+        |
+        <%= link_to 'Add a restaurant', restaurants_new_path, class:'navbar-nav text-white d-inline' %>
+      </div>
+    </div>
+    <div class="container mt-3">
+      <%= yield %>
+    </div>
   </body>
 </html>
