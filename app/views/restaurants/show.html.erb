@@ -1,6 +1,25 @@
 <div class="card p-3 m-3 border-0 rounded">
   <h1><%= @restaurant.name %></h1>
-  <p><%= @restaurant.address %></p>
-  <p><%= @restaurant.phone_number %></p>
-  <p><%= @restaurant.category.capitalize %></p>
+  <p><i class="fas fa-map-marker-alt"></i>  <%= @restaurant.address %></p>
+  <p><i class="fas fa-phone"></i>  <%= @restaurant.phone_number %></p>
+  <p><i class="fas fa-utensils"></i>  <%= @restaurant.category.capitalize %></p>
+</div>
+
+<div class="px-3">
+  <%= link_to 'Add a review', new_restaurant_review_path(@restaurant), class:'btn btn-secondary' %>
+  <%= link_to 'Go back', restaurants_path, class:'ml-3 text-dark' %>
+</div>
+
+<div class="card p-3 m-3 border-0 rounded">
+  <% if @reviews == [] %>
+    <p><i class="fas fa-pen-nib"></i> Write a review and be a first reviewer!</p>
+  <% else %>
+    <% @reviews.each do |review| %>
+      <p>
+        <%= review.content %><% review.rating.times do |t| %>
+          <i class="fas fa-utensil-spoon"></i>
+        <% end %>
+      </p>
+    <% end %>
+  <% end %>
 </div>
